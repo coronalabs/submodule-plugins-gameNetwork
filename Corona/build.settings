@@ -1,0 +1,22 @@
+settings = {
+	orientation =
+	{
+		default = "portrait",
+	},
+	iphone =
+	{
+		plist=
+		{
+	        CFBundleIconFile = "Icon.png",
+	        CFBundleIconFiles = {
+	           "Icon.png", 
+	           "Icon@2x.png", 
+	           "Icon-72.png", 
+	        },
+
+			CFBundleIdentifier = "com.appledts.GKTapper",	-- Apple's GameCenter Example (GKTapper)
+		},
+		components = {}	-- no openfeint
+		--components = { "openfeint" }	-- for openfeint & gamecenter
+	}
+}
