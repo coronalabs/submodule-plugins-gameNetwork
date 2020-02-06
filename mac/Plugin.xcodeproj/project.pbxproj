@@ -19,6 +19,8 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.lua";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$TARGET_TEMP_DIR/$(INPUT_FILE_BASE).c",
@@ -129,6 +131,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A482DA7815F9B7E70084DC42;
@@ -153,7 +156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\n# Checks exit value for error\n# \ncheckError() {\n    if [ $? -ne 0 ]\n    then\n        echo \"Exiting due to errors (above)\"\n        exit -1\n    fi\n}\n\nPLUGINS_DIR=\"/Library/Application Support/Corona/Simulator/Plugins\"\n\nmkdir -p \"$PLUGINS_DIR\"\ncheckError\n\n# Only copy on Debug builds\nif [[ ! ( \"$CONFIGURATION\" =~ .*Debug.* ) ]]\nthen\n    echo \"For $CONFIGURATION, we do *not* copy to $PLUGINS_DIR\"\n    exit 0\nelse\n    echo \"For $CONFIGURATION, copy $FULL_PRODUCT_NAME to $PLUGINS_DIR:\"\nfi\n\ncp -v $CONFIGURATION_BUILD_DIR/$FULL_PRODUCT_NAME \"$PLUGINS_DIR\"/.\ncheckError";
+			shellScript = "#\n# Checks exit value for error\n# \ncheckError() {\n    if [ $? -ne 0 ]\n    then\n        echo \"Exiting due to errors (above)\"\n        exit -1\n    fi\n}\n\nPLUGINS_DIR=\"${HOME}/Library/Application Support/Corona/Simulator/Plugins\"\n\nmkdir -p \"$PLUGINS_DIR\"\ncheckError\n\n# Only copy on Debug builds\nif [[ ! ( \"$CONFIGURATION\" =~ .*Debug.* ) ]]\nthen\n    echo \"For $CONFIGURATION, we do *not* copy to $PLUGINS_DIR\"\n    exit 0\nelse\n    echo \"For $CONFIGURATION, copy $FULL_PRODUCT_NAME to $PLUGINS_DIR:\"\nfi\n\ncp -v $CONFIGURATION_BUILD_DIR/$FULL_PRODUCT_NAME \"$PLUGINS_DIR\"/.\ncheckError\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -194,7 +197,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -220,7 +223,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
