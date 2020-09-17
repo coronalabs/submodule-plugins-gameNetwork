@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,11 +18,14 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.lua";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$TARGET_TEMP_DIR/$(INPUT_FILE_BASE).c",
 			);
-			script = "CORONA_DIR=$SRCROOT/CoronaEnterprise/Corona\nCORONA_MAC_BIN_DIR=$CORONA_DIR/mac/bin\n\nif [ -e \"$CORONA_MAC_BIN_DIR/lua\" ]; then\n    LUA_DIR=$CORONA_MAC_BIN_DIR/lua\nelse\n    echo \"Could not find proper 32-bit lua build in: $CORONA_MAC_BIN_DIR/lua\"\n    exit 1\nfi\n\necho $CORONA_MAC_BIN_DIR/lua2c.sh $INPUT_FILE_PATH $TARGET_TEMP_DIR $CONFIGURATION\n\"$CORONA_MAC_BIN_DIR/lua2c.sh\" \"$INPUT_FILE_PATH\" \"$TARGET_TEMP_DIR\" \"$CONFIGURATION\" \"$CORONA_MAC_BIN_DIR\"";
+			runOncePerArchitecture = 0;
+			script = "CORONA_DIR=$SRCROOT/CoronaEnterprise/Corona\nCORONA_MAC_BIN_DIR=$CORONA_DIR/mac/bin\n\nif [ -e \"$CORONA_MAC_BIN_DIR/lua\" ]; then\n    LUA_DIR=$CORONA_MAC_BIN_DIR/lua\nelse\n    echo \"Could not find proper 32-bit lua build in: $CORONA_MAC_BIN_DIR/lua\"\n    exit 1\nfi\n\necho $CORONA_MAC_BIN_DIR/lua2c.sh $INPUT_FILE_PATH $TARGET_TEMP_DIR $CONFIGURATION\n\"$CORONA_MAC_BIN_DIR/lua2c.sh\" \"$INPUT_FILE_PATH\" \"$TARGET_TEMP_DIR\" \"$CONFIGURATION\" \"$CORONA_MAC_BIN_DIR\"\n";
 		};
 /* End PBXBuildRule section */
 
@@ -118,6 +121,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A484110E15114F700074BD57;
@@ -165,7 +169,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona ${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua ${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona";
+				USER_HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona",
+					"${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua",
+					"${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona",
+				);
 			};
 			name = Debug;
 		};
@@ -184,7 +192,11 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona ${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua ${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona";
+				USER_HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona",
+					"${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua",
+					"${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona",
+				);
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -209,6 +221,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/gameNetwork.dst;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				OTHER_LDFLAGS = "-ObjC";
